@@ -2,7 +2,7 @@ import requests
 import pandas as pd
 from datetime import datetime
 
-API_KEY = "740ef5627c7474d84c79e24d7645480b"
+API_KEY = ""
 CITY = "Islamabad"
 BASE_URL = f"https://api.openweathermap.org/data/2.5/weather?q={CITY}&APPID={API_KEY}"
 
