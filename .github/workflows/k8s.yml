@@ -19,10 +19,7 @@ jobs:
           version: 'latest'
 
       - name: Set up Minikube
-        uses: manusa/actions-setup-minikube@v2.6.1
-        with:
-          minikube-version: 'latest'
-          kubernetes-version: '1.27.0' # Specify Kubernetes version if required
+        uses: medyagh/setup-minikube@latest
 
       - name: Start Minikube
         run: |
