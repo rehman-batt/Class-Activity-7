@@ -23,7 +23,7 @@ jobs:
 
       - name: Start Minikube
         run: |
-          minikube start --driver=none
+          minikube start --driver=docker
 
       - name: Pull Docker image
         run: |
