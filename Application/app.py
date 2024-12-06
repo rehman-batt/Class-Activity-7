@@ -19,7 +19,7 @@ class User(db.Model):
     email = db.Column(db.String(150), unique=True, nullable=False)
     password = db.Column(db.String(150), nullable=False)
 
-MODEL_PATH = r"models\model.pkl"
+MODEL_PATH = r"..\models\model.pkl"
 with open(MODEL_PATH, "rb") as model_file:
     model = pickle.load(model_file)
 
