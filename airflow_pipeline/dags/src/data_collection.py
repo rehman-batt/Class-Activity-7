@@ -2,7 +2,7 @@ import requests
 import pandas as pd
 from datetime import datetime
 
-API_KEY = ""
+API_KEY = "740ef5627c7474d84c79e24d7645480b"
 CITY = "Islamabad"
 BASE_URL = f"https://api.openweathermap.org/data/2.5/weather?q={CITY}&APPID={API_KEY}"
 
@@ -20,7 +20,7 @@ def fetch_data():
     }
 
     df = pd.DataFrame([data])
-    df.to_csv(r"D:\Fast NU\7th semester (pro max plus) shit\MLOps\Class-Activity-7\datasets\data.csv", index=False, header=False)
+    df.to_csv(r"/opt/airflow/dags/src/datasets/data.csv", index=False, header=False)
 
 if __name__ == "__main__":
     fetch_data()
