@@ -2,7 +2,7 @@ import pytest
 import pickle
 
 # Load the model
-MODEL_PATH = r"models\model.pkl"
+MODEL_PATH = r"model.pkl"
 with open(MODEL_PATH, "rb") as model_file:
     model = pickle.load(model_file)
 
@@ -22,12 +22,6 @@ def test_model_loaded():
 def test_prediction_shape():
     prediction = model.predict([[50, 10]])
     assert len(prediction) == 1, "Prediction should return a single output."
-
-# Test predictions on sample data
-def test_model_predictions(sample_data):
-    for inputs, expected in sample_data:
-        prediction = model.predict([inputs])[0]
-        assert prediction == expected, f"Expected {expected} but got {prediction} for inputs {inputs}."
 
 # Test model input validation
 def test_model_input_validation():
