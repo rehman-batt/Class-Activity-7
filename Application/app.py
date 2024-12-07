@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request, redirect, url_for, session
 from flask_sqlalchemy import SQLAlchemy
 import pickle
+import numpy as np
 
 
 app = Flask(__name__)
@@ -19,7 +20,7 @@ class User(db.Model):
     email = db.Column(db.String(150), unique=True, nullable=False)
     password = db.Column(db.String(150), nullable=False)
 
-MODEL_PATH = r"D:\Semester VII\MLOps\Class-Activity-7\models\model.pkl"
+MODEL_PATH = r"D:\Fast NU\7th semester (pro max plus) shit\MLOps\Class-Activity-7\models\model.pkl"
 with open(MODEL_PATH, "rb") as model_file:
     model = pickle.load(model_file)
 
@@ -81,13 +82,24 @@ def main():
 def predict():
     if 'user' not in session:
         return redirect(url_for('login'))
-    # Get input values
-    humid = float(request.form['humid'])
-    wind_sp = float(request.form['wind_sp'])
 
-    # Make prediction
-    prediction = model.predict([[humid, wind_sp]])[0]
-    return render_template('main.html', prediction=prediction)
+    try:
+        # Get input values
+        humid = float(request.form['humid'])
+        wind_sp = float(request.form['wind_sp'])
+        cloud_cover = float(request.form['cloud_cover'])
+        precipitation = float(request.form['precipitation'])
+
+        # Prepare the input features
+        input_features = np.array([[humid, wind_sp, cloud_cover, precipitation]])
+
+        # Make prediction
+        prediction = model.predict(input_features)[0][0]
+
+        return render_template('main.html', prediction=prediction)
+    except Exception as e:
+        print(f"Error during prediction: {e}")
+        return render_template('main.html', prediction="Error during prediction. Please try again.")
 
 
 @app.route('/logout')
