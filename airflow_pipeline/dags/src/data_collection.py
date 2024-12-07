@@ -72,7 +72,7 @@ def fetch_data():
 
         # Specify the output file path
         # to_csv(r"/opt/airflow/dags/src/datasets/data.csv", index=False, header=False)
-        weather_df.to_csv(r"D:\Fast NU\7th semester (pro max plus) shit\MLOps\Class-Activity-7\airflow_pipeline\dags\src\datasets\data.csv", index=False)
+        weather_df.to_csv(r"D:\\Semester VII\\MLOps\\Class-Activity-7\\airflow_pipeline\\dags\\src\\datasets\\data.csv", index=False)
         print("Weather data successfully saved to the CSV file.")
     else:
         print("No weather data retrieved.")
